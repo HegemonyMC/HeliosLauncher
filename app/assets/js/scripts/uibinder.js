@@ -23,6 +23,7 @@ const VIEWS = {
 
 // The currently shown view container.
 let currentView
+let sound
 
 /**
  * Switch launcher views.
@@ -55,6 +56,31 @@ function getCurrentView(){
     return currentView
 }
 
+function playMusic(path) {
+    if (sound)
+        sound.stop()
+
+    sound = new Howl({
+        src: [path],
+        loop: true,
+        volume: 0.5
+    })
+
+    sound.play()
+
+    document.addEventListener('launching', () => pauseMusic(), false)
+    document.addEventListener('mute', () => toggleMusicMute(), false)
+}
+
+function pauseMusic() {
+    if (sound)
+        sound.pause()
+}
+
+function toggleMusicMute() {
+    sound.playing() ? sound.pause() : sound.play()
+}
+
 function showMainUI(data){
 
     if(!isDev){
@@ -65,6 +91,7 @@ function showMainUI(data){
     prepareSettings(true)
     updateSelectedServer(data.getServer(ConfigManager.getSelectedServer()))
     refreshServerStatus()
+    playMusic('assets/sounds/music.mp3')
     setTimeout(() => {
         document.getElementById('frameBar').style.backgroundColor = 'rgba(0, 0, 0, 0.5)'
         document.body.style.backgroundImage = `url('assets/images/backgrounds/${document.body.getAttribute('bkid')}.jpg')`

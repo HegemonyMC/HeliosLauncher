@@ -397,6 +397,13 @@ button {
   right: 5%;
 }
 
+/* Mute Button */
+.mute-container {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
 /* Login cancel button styles. */
 #loginCancelButton {
   background: none;
