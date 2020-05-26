@@ -1446,7 +1446,7 @@ class AssetGuard extends EventEmitter {
             for(let ob of modules){
                 const type = ob.getType()
                 if(type === DistroManager.Types.ForgeHosted || type === DistroManager.Types.Forge){
-                    if(Util.mcVersionAtLeast('1.13', server.getMinecraftVersion())){
+                    if (Util.mcVersionAtLeast('1.13', server.getMinecraftVersion())){
                         // Read Manifest
                         for(let sub of ob.getSubModules()){
                             if(sub.getType() === DistroManager.Types.VersionManifest){
@@ -1454,7 +1454,7 @@ class AssetGuard extends EventEmitter {
                                 return
                             }
                         }
-                        reject('No forge version manifest found!')
+                        reject('No forge version manifest found for module: ' + ob.getID())
                         return
                     } else {
                         let obArtifact = ob.getArtifact()
