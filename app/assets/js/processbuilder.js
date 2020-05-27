@@ -109,11 +109,10 @@ class ProcessBuilder {
       });
     });
 
-            let ev = new Event('mute')
-            document.dispatchEvent(ev)
-        })
+    let ev = new Event('mute')
+    document.dispatchEvent(ev)
 
-        return child
+    return child
   }
 
   /**
