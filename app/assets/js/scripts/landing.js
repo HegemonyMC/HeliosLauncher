@@ -661,6 +661,8 @@ function dlAsync(login = true) {
             progressListener = null;
           }
 
+          document.dispatchEvent(new Event('launching'))
+          
           setLaunchDetails("Preparing to launch..");
           break;
       }

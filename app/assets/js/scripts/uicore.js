@@ -50,9 +50,8 @@ remote.getCurrentWebContents().on("devtools-opened", () => {
 });
 
 // Disable zoom, needed for darwin.
-webFrame.setZoomLevel(0);
-webFrame.setVisualZoomLevelLimits(1, 1);
-webFrame.setLayoutZoomLevelLimits(0, 0);
+webFrame.setZoomLevel(0)
+webFrame.setVisualZoomLevelLimits(1, 1)
 
 /**
  * Send a notification to the main process changing the value of

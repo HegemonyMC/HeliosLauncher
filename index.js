@@ -1,13 +1,12 @@
 // Requirements
-const { app, BrowserWindow, ipcMain } = require("electron");
-const Menu = require("electron").Menu;
-const autoUpdater = require("electron-updater").autoUpdater;
-const ejse = require("ejs-electron");
-const fs = require("fs");
-const isDev = require("./app/assets/js/isdev");
-const path = require("path");
-const semver = require("semver");
-const url = require("url");
+const { app, BrowserWindow, ipcMain, Menu } = require('electron')
+const autoUpdater                   = require('electron-updater').autoUpdater
+const ejse                          = require('ejs-electron')
+const fs                            = require('fs')
+const isDev                         = require('./app/assets/js/isdev')
+const path                          = require('path')
+const semver                        = require('semver')
+const url                           = require('url')
 
 // Setup auto updater.
 function initAutoUpdater(event, data) {
@@ -83,6 +82,9 @@ ipcMain.on("distributionIndexDone", (event, res) => {
 // Disable hardware acceleration.
 // https://electronjs.org/docs/tutorial/offscreen-rendering
 app.disableHardwareAcceleration();
+
+// https://github.com/electron/electron/issues/18397
+app.allowRendererProcessReuse = true
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

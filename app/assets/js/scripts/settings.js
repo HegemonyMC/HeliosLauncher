@@ -1818,23 +1818,23 @@ function bindDropinModsRemoveButton() {
  * Bind functionality to the file system button for the selected
  * server configuration.
  */
-function bindDropinModFileSystemButton() {
-  const fsBtn = document.getElementById("settingsDropinFileSystemButton");
-  fsBtn.onclick = () => {
-    DropinModUtil.validateDir(CACHE_SETTINGS_MODS_DIR);
-    shell.openItem(CACHE_SETTINGS_MODS_DIR);
-  };
-  fsBtn.ondragenter = e => {
-    e.dataTransfer.dropEffect = "move";
-    fsBtn.setAttribute("drag", "");
-    e.preventDefault();
-  };
-  fsBtn.ondragover = e => {
-    e.preventDefault();
-  };
-  fsBtn.ondragleave = e => {
-    fsBtn.removeAttribute("drag");
-  };
+function bindDropinModFileSystemButton(){
+    const fsBtn = document.getElementById('settingsDropinFileSystemButton')
+    fsBtn.onclick = () => {
+        DropinModUtil.validateDir(CACHE_SETTINGS_MODS_DIR)
+        shell.openPath(CACHE_SETTINGS_MODS_DIR)
+    }
+    fsBtn.ondragenter = e => {
+        e.dataTransfer.dropEffect = 'move'
+        fsBtn.setAttribute('drag', '')
+        e.preventDefault()
+    }
+    fsBtn.ondragover = e => {
+        e.preventDefault()
+    }
+    fsBtn.ondragleave = e => {
+        fsBtn.removeAttribute('drag')
+    }
 
   fsBtn.ondrop = e => {
     fsBtn.removeAttribute("drag");
@@ -1961,23 +1961,23 @@ function saveShaderpackSettings() {
 }
 
 function bindShaderpackButton() {
-  const spBtn = document.getElementById("settingsShaderpackButton");
-  spBtn.onclick = () => {
-    const p = path.join(CACHE_SETTINGS_INSTANCE_DIR, "shaderpacks");
-    DropinModUtil.validateDir(p);
-    shell.openItem(p);
-  };
-  spBtn.ondragenter = e => {
-    e.dataTransfer.dropEffect = "move";
-    spBtn.setAttribute("drag", "");
-    e.preventDefault();
-  };
-  spBtn.ondragover = e => {
-    e.preventDefault();
-  };
-  spBtn.ondragleave = e => {
-    spBtn.removeAttribute("drag");
-  };
+    const spBtn = document.getElementById('settingsShaderpackButton')
+    spBtn.onclick = () => {
+        const p = path.join(CACHE_SETTINGS_INSTANCE_DIR, 'shaderpacks')
+        DropinModUtil.validateDir(p)
+        shell.openPath(p)
+    }
+    spBtn.ondragenter = e => {
+        e.dataTransfer.dropEffect = 'move'
+        spBtn.setAttribute('drag', '')
+        e.preventDefault()
+    }
+    spBtn.ondragover = e => {
+        e.preventDefault()
+    }
+    spBtn.ondragleave = e => {
+        spBtn.removeAttribute('drag')
+    }
 
   spBtn.ondrop = e => {
     spBtn.removeAttribute("drag");
